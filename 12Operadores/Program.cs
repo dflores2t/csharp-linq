@@ -2,7 +2,8 @@
 
 using System.Collections;
 
-public class Program{
+public class Program
+{
   static void Main(string[] args)
   {
     //WHERE STARTWITHS
@@ -224,10 +225,56 @@ public class Program{
     //primer elemento o default
     int primerod = numeros.FirstOrDefault(n => n % 57 == 0); //default del entero es 0
     System.Console.WriteLine(primerod);
-  
 
+    //operadores Sum, Aggregate, All, SequenceEqual, Empty, Repeat, Range
+    //Cout, LongCount -> regresa la cantidad de elementos en la secuencia into int64
+    //Min -> Regresa el elemento menor de la secuencia.
+    //Max -> Regresa el elemento mayor de la secuencia.
+    //Sum -> Regresa la sumatoria de los elementos.
+    //Average -> Regresa el promedio de los elementos.
+    //Aggregate -> Hace una agregacion usando nuestro algoritmo.
+    System.Console.WriteLine("-----------------AGREGACION--------------");
+    int sumatoria = numeros.Sum();
+    System.Console.WriteLine(sumatoria);
+    int[] numeros2 = { 1, 2, 3, 4, 5 };
+    // en este caso la semilla es cero, si no se pone la semilla, toma el primer valor
+    int agregado = numeros2.Aggregate(0, (t, n) => t + (n * 2)); //t representa la acmulacion y n representa el valor del Elemento 
+    System.Console.WriteLine(agregado);
+    System.Console.WriteLine("-------------------------------------");
 
+    System.Console.WriteLine("CUANTIFICADORES");
+    //Cuantificadores
+    //Contains -> Regresa true si la secuencia contiene al elemento.
+    //Any -> Regresa true si un elemento satisface al predicado.
+    //All -> Regresa true si todos los elementos satisfacen al predicado
+    //SequenceEqual -> Regresa true si la segunda secuencia tiene elementos identios a la de entrada.
+    System.Console.WriteLine("----------------------------------");
+    bool todos = numeros2.All(n => n < 10);
+    System.Console.WriteLine(todos);
 
+    bool iguales = numeros2.SequenceEqual(numeros);
+    System.Console.WriteLine(iguales);
+    System.Console.WriteLine("----------------------------");
 
+    System.Console.WriteLine("---------------GENERACION ----------");
+    //Empty -> crea una suecuencia vacia
+    //Repeat -> crea una secuencia de elementos que se repiten
+    //Range -> crea una secuencia de enteros dependiendo de lo que se le indique
+
+    System.Console.WriteLine("----------------------------------------------");
+    var vacia = Enumerable.Empty<int>();
+    foreach (int n in vacia)
+    {
+      System.Console.WriteLine(n);
+    }
+    System.Console.WriteLine("-----------------------REPEAT-----------------------");
+    var REPETIR = Enumerable.Repeat("Hosa", 10);
+    foreach(string n in REPETIR)
+      System.Console.WriteLine(n);
+
+      System.Console.WriteLine("--------------------range----------------");
+    var rango = Enumerable.Range(5, 15);// inicio, elemennto
+    foreach(int n in rango)
+      System.Console.WriteLine(n);
   }
 }
